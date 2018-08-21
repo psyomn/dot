@@ -1,0 +1,64 @@
+https://security.gentoo.org/glsa/feed.rss Linux
+https://www.archlinux.org/feeds/news/ Linux
+https://golangnews.com/index.xml programming
+https://this-week-in-rust.org/atom.xml programming
+https://www.ruby-lang.org/en/feeds/news.rss programming
+http://www.efsyn.gr/?feed=rss2 news
+http://www.arktimes.com/arkansas/Rss.xml news
+http://www.cipht.net/atom.xml "Computer science" programming
+https://www.reddit.com/r/systems.rss "Computer science"   programming
+http://feeds.feedburner.com/daniel-lemire/atom "Computer science" programming
+http://planet.ada.wtf/rss20.xml "Computer science" programming
+http://csdl.computer.org/rss/cal.xml "Computer science" programming
+http://eli.thegreenplace.net/feed/ "Computer science" programming
+http://jvns.ca/atom.xml "Computer science" programming
+https://idea.popcount.org/rss.xml "Computer science" programming
+http://feeds.huoc.org/ourshippy "Computer science" programming
+http://blog.acolyer.org/feed/ "Computer science" programming
+http://twitrss.me/twitter_user_to_rss/?user=ID_AA_Carmack "systems" programming
+http://codesuppository.blogspot.com/feeds/posts/default "systems" programming
+http://jayconrod.com/feed "systems" programming
+http://danluu.com/atom.xml "systems" programming
+http://blog.regehr.org/feed "systems" programming
+https://twitrss.me/twitter_user_to_rss/?user=id_aa_carmack "Must Read" programming
+http://slawekk.wordpress.com/feed/ "maths"
+http://www.johndcook.com/blog/feed/ "maths"
+http://lwn.net/headlines/newrss "Linux"
+http://blog.cloudflare.com/rss.xml "Linux"
+http://feeds.reuters.com/Reuters/worldNews "reuters" "news"
+http://feeds.reuters.com/Reuters/domesticNews "reuters" "news"
+http://feeds.reuters.com/reuters/scienceNews "reuters" "news"
+http://feeds.reuters.com/news/wealth "reuters" "news"
+http://feeds.reuters.com/news/artsculture "reuters" "news"
+http://www.chinadaily.com.cn/rss/china_rss.xml "news"
+https://www.reddit.com/r/europe/.rss "news" "europe"
+https://www.reddit.com/r/greece/.rss "news" "greece"
+https://www.reddit.com/r/golang/.rss "programming"
+http://www.spinellis.gr/blog/dds-blog-rss.xml "programming"
+http://feeds.feedburner.com/FastDataCompression?format=xml "programming"
+https://news.ycombinator.com/rss "programming"
+https://lobste.rs/rss "programming"
+http://www.erlang.org/rss/news "programming"
+https://martinfowler.com/feed.atom "programming"
+https://queue.acm.org/rss/feeds/filesystemsandstorage.xml ACM programming
+https://queue.acm.org/rss/feeds/failureandrecovery.xml ACM programming
+https://queue.acm.org/rss/feeds/networks.xml ACM programming
+https://queue.acm.org/rss/feeds/education.xml ACM programming
+https://queue.acm.org/rss/feeds/distributedcomputing.xml ACM programming
+https://queue.acm.org/rss/feeds/apidesign.xml ACM programming
+https://queue.acm.org/rss/feeds/debugging.xml ACM programming
+https://queue.acm.org/rss/feeds/performance.xml ACM programming
+https://queue.acm.org/rss/feeds/programminglanguages.xml ACM programming
+https://queue.acm.org/rss/feeds/virtualmachines.xml ACM programming
+https://www.youtube.com/feeds/videos.xml?channel_id=UCsvn_Po0SmunchJYOWpOxMg "youtube"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCgzy7JqiE7qcpdnwu79dF_A "youtube"
+https://www.youtube.com/feeds/videos.xml?channel_id=UC3KEoMzNz8eYnwBC34RaKCQ "youtube"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCnsEhLNp2-rjWo6CHgBFoMQ "youtube"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCpclRlEJ2oh6JDEJy68UjKA "youtube"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCnbvPS_rXp4PC21PG2k1UVg "youtube"
+https://www.youtube.com/feeds/videos.xml?channel_id=UC0M0rxSz3IF0CsSour1iWmw "youtube"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCTUtqcDkzw7bisadh6AOx5w "youtube"
+https://www.youtube.com/feeds/videos.xml?channel_id=UC42VsoDtra5hMiXZSsD6eGg "youtube"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCPhVxopWpXWy-qHMXRVPLEQ "youtube"
+https://www.youtube.com/feeds/videos.xml?channel_id=UC9CuvdOVfMPvKCiwdGKL3cQ "youtube"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCWCw2Sd7RlYJ2yuNVHDWNOA "youtube"
