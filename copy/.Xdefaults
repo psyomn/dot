@@ -1,0 +1,47 @@
+!--------------------xdefauls
+URxvt.font: xft:Noto Mono:pixelsize=13
+
+! special
+*.foreground:   #dad9e0
+*.background:   #050509
+*.cursorColor:  #dad9e0
+
+! black
+*.color0:       #0b0a11
+*.color8:       #52b0bf
+
+! red
+*.color1:       #ff0000
+*.color9:       #54836c
+
+! green
+*.color2:       #00ff00
+*.color10:      #7db7c3
+
+! yellow
+*.color3:       #413e54
+*.color11:      #dd9478
+
+! blue
+*.color4:       #5f5d78
+*.color12:      #4b9fad
+
+! magenta
+*.color5:       #85839a
+*.color13:      #3e9c73
+
+! cyan
+*.color6:       #b0afbe
+*.color14:      #e89069
+
+! white
+*.color7:       #e2e2e7
+*.color15:      #f08ecd
+
+! URxvt.scrollBar: false
+
+! clickable links
+urxvt*perl-lib:            /usr/lib/urxvt/perl/
+urxvt*perl-ext-common:        default,matcher
+urxvt*urlLauncher:        /usr/bin/firefox
+urxvt*matcher.button:        1
