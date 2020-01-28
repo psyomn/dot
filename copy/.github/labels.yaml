@@ -1,0 +1,23 @@
+---
+
+# Github label configuration.
+
+# T = Type
+# L = Lifecycle
+
+# https://developer.github.com/v3/issues/labels/#update-a-label
+rename:
+  bug:         ["T-bug",       "a00000", "A software fault or failure"]
+  duplicate:   ["L-duplicate", "16336d", "dOops!"]
+  enhancement: ["T-upkeep",    "009a00", "Anything that rejuvenates"]
+  invalid:     ["L-invalid",   "ffbb0e", "Anything that is invalid"]
+  question:    ["T-question",  "ffaa99", "Questions are good!"]
+  wontfix:     ["L-wontfix",   "231f20", "Things not to fix"]
+
+# https://developer.github.com/v3/issues/labels/#create-a-label
+create:
+  - ["T-perf",    "000000", "Anything concerning perf"]
+  - ["T-feature", "000000", "Anything that is adds new behavior"]
+  - ["T-doc",     "000000", "Anything that adds documentation"]
+  - ["T-hotfix",  "000000", "Critical things to deploy"]
+  - ["L-ready",   "000000", "Anything ready for merging and releasing"]
