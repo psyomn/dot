@@ -21,12 +21,11 @@ uint16_t convert_battery_reading();
 int main(int argc, char* argv[]) {
   (void) argc, (void) argv;
 
-  void (*engravers[])(char*, size_t) =
-    {
-      &engrave_wifi,
-      &engrave_batt,
-      &engrave_date
-    };
+  void (*engravers[])(char*, size_t) = {
+    &engrave_wifi,
+    &engrave_batt,
+    &engrave_date
+  };
 
   size_t engraver_size = sizeof(engravers) / sizeof(&engrave_date);
 
@@ -39,17 +38,22 @@ int main(int argc, char* argv[]) {
     buffer[0] = 0;
     display = XOpenDisplay(NULL);
 
-    for (size_t x = 0; x < engraver_size; ++x) {
+    for (size_t x = 0; x < engraver_size; ++x)
       engravers[x](buffer, buff_size);
-    }
 
     screen = DefaultScreen(display);
+
     const Window root = RootWindow(display, screen);
+    if (!root)
+      break;
 
     XStoreName(display, root, buffer);
     XCloseDisplay(display);
 
+#ifdef DEBUG
     printf("%s\n", buffer);
+#endif
+
     usleep(MU_SLEEP_TIME);
   }
 
@@ -59,12 +63,12 @@ int main(int argc, char* argv[]) {
 void engrave_date(char* _buffer, size_t _buff_size) {
   const time_t now = time(NULL);
   const struct tm time = *localtime(&now);
-  const char* date_fmt = "[%d:%d][%d/%d/%d]";
+  const char* date_fmt = "[%02d:%02d][%02d/%02d/%02d]";
   char store[32];
 
   sprintf(store, date_fmt,
 	  time.tm_hour, time.tm_min,
-	  time.tm_mday, time.tm_mon, time.tm_year + 1900);
+	  time.tm_mday, time.tm_mon + 1, time.tm_year + 1900);
 
   strncat(_buffer, store, _buff_size);
 }
@@ -80,8 +84,7 @@ void engrave_wifi(char* _buffer, size_t _buff_size) {
 
 void engrave_batt(char* _buffer, size_t _buff_size) {
   const uint8_t max_batteries = 32;
-  const char* label = "BAT:";
-  const char* fmt = "[%s%d]";
+  const char* fmt = "[BAT:%03d]";
   char battery[16];
 
   FILE* bat_file = NULL;
@@ -115,6 +118,6 @@ void engrave_batt(char* _buffer, size_t _buff_size) {
       cumulative_power += tmp_power;
   }
 
-  sprintf(battery, fmt, label, cumulative_power / bat_count);
+  sprintf(battery, fmt, cumulative_power / bat_count);
   strncat(_buffer, battery, _buff_size);
 }
