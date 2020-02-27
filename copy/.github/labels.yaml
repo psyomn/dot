@@ -16,8 +16,10 @@ rename:
 
 # https://developer.github.com/v3/issues/labels/#create-a-label
 create:
-  - ["T-perf",    "000000", "Anything concerning perf"]
-  - ["T-feature", "000000", "Anything that is adds new behavior"]
-  - ["T-doc",     "000000", "Anything that adds documentation"]
-  - ["T-hotfix",  "000000", "Critical things to deploy"]
-  - ["L-ready",   "000000", "Anything ready for merging and releasing"]
+  - ["T-perf",           "000000", "Anything concerning perf"]
+  - ["T-feature",        "000000", "Anything that is adds new behavior"]
+  - ["T-doc",            "000000", "Anything that adds documentation"]
+  - ["T-hotfix",         "000000", "Critical things to deploy"]
+  - ["L-ready",          "000000", "Anything ready for merging and releasing"]
+  - ["good first issue", "000000", "Welcoming newcommers to repo"]
+  - ["help wanted",      "000000", "Everyone needs a little help"]
