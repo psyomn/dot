@@ -1,6 +1,12 @@
 #include <sys/types.h>
+#include <sys/socket.h>
+
+#include <netinet/in.h>
+
+#include <pthread.h>
 #include <X11/Xlib.h>
 
+#include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
 #include <time.h>
@@ -13,15 +19,24 @@ const static time_t MU_SLEEP_TIME = 5 * 1000000;
 const static char CALENDAR = 0;
 const static char CLOCK = 0x33;
 
-void engrave_date(char* _buffer, size_t _buff_size);
-void engrave_wifi(char* _buffer, size_t _buff_size);
-void engrave_batt(char* _buffer, size_t _buff_size);
+/* TODO: this is kind of garbage but I'll figure out a better way to
+         do this in the future */
+#define LAST_NOTIFICATION_MESSAGE_LEN 50
+char LAST_NOTIFICATION_ACC = 0;
+char LAST_NOTIFICATION_MESSAGE[2][LAST_NOTIFICATION_MESSAGE_LEN];
+
+void engrave_date(char *_buffer, size_t _buff_size);
+void engrave_wifi(char *_buffer, size_t _buff_size);
+void engrave_batt(char *_buffer, size_t _buff_size);
+void engrave_mess(char *_buffer, size_t _buff_size);
+void *notification_service(void *data);
 uint16_t convert_battery_reading();
 
 int main(int argc, char* argv[]) {
   (void) argc, (void) argv;
 
   void (*engravers[])(char*, size_t) = {
+    &engrave_mess,
     &engrave_wifi,
     &engrave_batt,
     &engrave_date
@@ -34,6 +49,20 @@ int main(int argc, char* argv[]) {
   size_t buff_size = 255;
   char buffer[buff_size];
 
+  // start any other services here
+  {
+    pthread_t tinfo;
+
+    const int ret =
+      pthread_create(&tinfo, NULL, &notification_service, NULL);
+
+    if (ret != 0) {
+      perror("pthread_create");
+      exit(EXIT_FAILURE);
+    }
+  }
+
+  // main loop
   while (1) {
     buffer[0] = 0;
     display = XOpenDisplay(NULL);
@@ -58,6 +87,10 @@ int main(int argc, char* argv[]) {
   }
 
   return 0;
+}
+
+void engrave_mess(char* _buffer, size_t _buff_size) {
+  strncat(_buffer, LAST_NOTIFICATION_MESSAGE, _buff_size);
 }
 
 void engrave_date(char* _buffer, size_t _buff_size) {
@@ -120,4 +153,42 @@ void engrave_batt(char* _buffer, size_t _buff_size) {
 
   sprintf(battery, fmt, cumulative_power / bat_count);
   strncat(_buffer, battery, _buff_size);
+}
+
+void *notification_service(void *data) {
+  (void) data;
+
+  const int port = 9001;
+
+  const int domain = AF_INET;
+  const int type = SOCK_DGRAM;
+  const int protocol = 0;
+  int opt = 1;
+
+  int sock_fd = socket(domain, type, protocol);
+  if (sock_fd == 0) {
+    perror("socket");
+    exit(EXIT_FAILURE);
+  }
+
+  if ((setsockopt(sock_fd, SOL_SOCKET, SO_REUSEADDR | SO_REUSEPORT,
+                  &opt, sizeof(opt))) != 0) {
+    perror("setsockopt");
+    exit(EXIT_FAILURE);
+  }
+
+  struct sockaddr_in address;
+  address.sin_family = AF_INET;
+  address.sin_port = htons(port);
+  address.sin_addr.s_addr = htonl(INADDR_LOOPBACK);
+
+  if (bind(sock_fd, (struct sockaddr*)&address, sizeof(address)) != 0) {
+    perror("bind");
+    exit(EXIT_FAILURE);
+  }
+
+  // Actual listen loop now
+  while (1) {
+    recvfrom(sock_fd, current, LAST_NOTIFICATION_MESSAGE_LEN, 0, 0, 0);
+  }
 }
